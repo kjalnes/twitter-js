@@ -15,6 +15,9 @@ nunjucks.configure('views', {
     watch: true,
     noCache: true
 });
+
+app.set('view engine', 'html');
+app.engine('html', nunjucks.render);
 // THIS IS THE SERVER
 
 app.use('/special', function(req, res, next) {
@@ -42,8 +45,9 @@ app.use('/special', function(req, res, next) {
 */
 
 app.get('/', function(req, res, next) {
-    let nunjuckMagic = nunjucks.render('index.html', { people, title: 'An Example' });
-    res.send(nunjuckMagic); // res creates a new instance of the response object
+    //let nunjuckMagic = nunjucks.render('index.html', { people, title: 'An Example' });
+    //res.send(nunjuckMagic); // res creates a new instance of the response object
+    res.render('index.html', { people, title: 'An Example' });
 });
 
 app.get('/news', function(req, res, next) {
@@ -52,6 +56,5 @@ app.get('/news', function(req, res, next) {
 });
 
 app.listen(3000, function() {
-    console.log('server is running')
-
+    console.log('server is running');
 });
