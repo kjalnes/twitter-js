@@ -14,5 +14,3 @@ function find(properties) {
 }
 
 module.exports = { add: add, list: list, find: find };
-``
-`
